@@ -16,7 +16,18 @@ module axi_lite_master (
     output wire RREADY,         // Ready to accept read data and response
 
     // Write address channel
-    input 
+    output wire [31:0] AWADDR,  // 32-bit write address
+    output wire AWVALID,        // Write address and ctrl signals are valid
+    input wire AWREADY,         // Slave is ready to accept write address and ctrl signals
+
+    // Write data channel
+    output wire [31:0] WDATA,   // 32-bit write data
+    output wire [3:0] WSTRB,    // Write strobe, which bytes of wdata to write
+
+    // Write response channel
+    input wire BRESP,           // Write response
+    input wire BVALID,          // Slave says write response on bus is valid
+    output wire BREADY          // Ready to accept a write response
     );
 
 endmodule
